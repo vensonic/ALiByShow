@@ -1,2 +1,2 @@
 # ALiByShow
-this is study project
+this is a study project
