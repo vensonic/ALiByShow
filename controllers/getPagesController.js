@@ -1,4 +1,5 @@
-
+//引入querystring
+var queryString = require('querystring')
 //获取前台首页
 exports.getIndexPage = function (req,res) {
     res.render('index.ejs')
@@ -14,7 +15,22 @@ exports.getListPage = function(req, res) {
 
 //获取后台首页
 exports.getAdminPage = function (req,res) {
-    res.render('admin/index.ejs')
+  // 使用cookie
+    // var myCookie = queryString.parse(req.headers.cookie)
+    // // console.log(myCookie);
+    // if(myCookie.isLogin && myCookie.isLogin == 'true'){
+    //    res.render("admin/index.ejs")
+    // }else{
+    //   res.redirect("/admin/login")
+    // }
+  //   //使用session
+  //  if(req.session.isLogin && req.session.isLogin == true){
+  //    res.render("admin/index.ejs")
+  //  }else{
+  //      res.redirect("/admin/login")
+  //  }
+     res.render("admin/index.ejs")
+   
 }
 //获取后台评论页
 exports.getCommentsPage = function (req,res) {
