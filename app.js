@@ -26,12 +26,8 @@ app.use(
   })
 )
 
-
-
 //使用中间件设置body-parser
 app.use(bodyParser.urlencoded({extended:false}))
-
-
 
 //设置ejs模板引擎
 app.set('view engine','ejs')
@@ -44,7 +40,6 @@ app.use("/assets", express.static("assets"))
 app.use((req, res, next) => {
   // 判断是否登陆
   // 前台页面不用登陆:req.url.indexOf('/admin') == -1
-  console.log(req.session)
   if (
      req.session.isLogin == "true" ||
     req.url.indexOf("/admin") == -1 ||

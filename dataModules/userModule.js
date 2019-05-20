@@ -1,13 +1,6 @@
-//引入mysql
-const mysql = require('mysql')
-//创建连接
-var connection = mysql.createConnection({
-    host:'localhost',
-    user:'root',
-    password:'root',
-    database:'baixiu'
-})
-connection.connect()
+//引入commonMOdule
+const commonModule = require('./commonModule')
+var connection = commonModule.getConnectionToMysql()
 exports.getByEmail = function (email,callback) {
     var sql = 'SELECT * FROM users WHERE email = ?'
     connection.query(sql, [email],(err,res)=>{

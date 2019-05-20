@@ -4,6 +4,9 @@ const express = require('express')
 const getPagesController = require('./controllers/getPagesController')
 //引入用户控制器
 const userController = require('./controllers/userController')
+//引入分类事物控制器
+const categoryController = require('./controllers/categoryController')
+
 //创建路由
 const router = express.Router()
 
@@ -38,8 +41,13 @@ router
   .get("/admin/slides", getPagesController.getSlidesPage)
   //获取后台users
   .get("/admin/users", getPagesController.getUsersPage)
-  
-  //处理后台登录
-  .post('/admin/login',userController.login)
 
+  //处理后台登录
+  .post("/admin/login", userController.login)
+  .get("/getAllCategories", categoryController.getAllCategories)
+  .post("/updateCategories", categoryController.updateCategories)
+  .post("/addCategory", categoryController.addCategory)
+  .get("/delSingleCategory", categoryController.delSingleCategory)
+  .get("/delSingleCategory", categoryController.delSingleCategory)
+  .post("/delCategoriesByMid", categoryController.delCategoriesByMid)
 module.exports = router
