@@ -80,23 +80,19 @@ exports.delSingleCategory = function (req,res) {
   }
 //批量删除
 exports.delCategoriesByMid = function (req,res) { 
-    var arr = req.body["id[]"] //是个字串数组 ['1','2']
-    // var newArr = []
-    // for (var i = 0; i < arr.length; i++) {
-    //   newArr.push(parseInt(arr[i])) //转换成数字数组 [1,2]
-    // }
-  categoryModule.delCategoriesByMid(arr, err => {
-    if (err) {
-      res.json({
-        code: 201,
-        msg: "数据删除失败"
-      });
-    } else {
-      res.json({
-        code: 200,
-        msg: "数据删除成功"
-      });
-    }
-  });
+    var ids = req.body.ids 
+ categoryModule.delCategoriesByMid(ids, err => {
+   if (err) {
+     res.json({
+       code: 201,
+       msg: "数据删除失败"
+     });
+   } else {
+     res.json({
+       code: 200,
+       msg: "数据删除成功"
+     });
+   }
+ });
  
  }

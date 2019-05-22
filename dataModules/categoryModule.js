@@ -5,7 +5,7 @@ var connection = commonModule.getConnectionToMysql()
 
 //获取所有目录数据
 exports.getAllCategories = function (callback) {
-    var sql = "SELECT * FROM categories WHERE id != 1"
+    var sql = "SELECT * FROM categories"
     connection.query(sql,(err,res)=>{
         if(err){
             callback(err)
@@ -57,9 +57,10 @@ exports.addCategory = function (obj,callback) {
  }
 
  //实现批量删除
- exports.delCategoriesByMid = function(arr,callback) {
-       var sql = "DELETE FROM categories where id in (?)"
-        connection.query(sql,[arr], (err) => {
+ exports.delCategoriesByMid = function(ids,callback) {
+      //  var sql = "DELETE FROM categories where id in (?)"
+          var sql = `DELETE FROM categories where id in (${ids})`
+        connection.query(sql,(err) => {
           if (err) {
             callback(err)
           }else{

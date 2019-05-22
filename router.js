@@ -6,7 +6,12 @@ const getPagesController = require('./controllers/getPagesController')
 const userController = require('./controllers/userController')
 //引入分类事物控制器
 const categoryController = require('./controllers/categoryController')
-
+//引入文章控制器
+const postsController = require('./controllers/postsController')
+//引入文件上传控制器
+const uploadController = require('./controllers/uploadController')
+//引入写文章控制器
+const addPostController = require('./controllers/addPostController')
 //创建路由
 const router = express.Router()
 
@@ -44,10 +49,18 @@ router
 
   //处理后台登录
   .post("/admin/login", userController.login)
+  //后台分类页路由
   .get("/getAllCategories", categoryController.getAllCategories)
   .post("/updateCategories", categoryController.updateCategories)
   .post("/addCategory", categoryController.addCategory)
   .get("/delSingleCategory", categoryController.delSingleCategory)
   .get("/delSingleCategory", categoryController.delSingleCategory)
   .post("/delCategoriesByMid", categoryController.delCategoriesByMid)
+  //后台文章页路由
+  .get("/getAllPosts", postsController.getAllPosts)
+  .get("/deletPost",postsController.deletPost)
+  //写文章路由
+  .post("/addPost", addPostController.addPost)
+  //文件上传
+  .post("/uploadFile", uploadController.uploadFile);
 module.exports = router

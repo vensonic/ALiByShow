@@ -14,10 +14,11 @@
       <div class="page-title">
         <h1>写文章</h1>
       </div>
-      <!-- 有错误信息时展示 -->
-      <!-- <div class="alert alert-danger">
-        <strong>错误！</strong>发生XXX错误
-      </div> -->
+   
+  <!-- 有错误信息时展示 -->
+  <div class="alert alert-danger tips" style="display:none">
+    <strong>提示！</strong> <span></span>
+  </div>
       <form class="row">
         <div class="col-md-9">
           <div class="form-group">
@@ -25,7 +26,7 @@
             <input id="title" class="form-control input-lg" name="title" type="text" placeholder="文章标题">
           </div>
           <div class="form-group">
-            <label for="content">标题</label>
+            <label for="content">内容</label>
             <textarea id="content" class="form-control input-lg" name="content" cols="30" rows="10" placeholder="内容"></textarea>
           </div>
         </div>
@@ -38,14 +39,18 @@
           <div class="form-group">
             <label for="feature">特色图像</label>
             <!-- show when image chose -->
-            <img class="help-block thumbnail" style="display: none">
+            <img class="help-block thumbnail" style="display: none;width: 100px">
             <input id="feature" class="form-control" name="feature" type="file">
+            <input type="hidden" name='feature' class="feature">
           </div>
           <div class="form-group">
             <label for="category">所属分类</label>
-            <select id="category" class="form-control" name="category">
-              <option value="1">未分类</option>
-              <option value="2">潮生活</option>
+            <select id="category" class="form-control selectCate" name="category_id">
+              <script type="text/template" id="optionTemplate">
+                            {{each data as value index}}
+                               <option value={{value.id}}>{{value.name}}</option>
+                            {{/each}}
+                         </script>
             </select>
           </div>
           <div class="form-group">
@@ -60,7 +65,7 @@
             </select>
           </div>
           <div class="form-group">
-            <button class="btn btn-primary" type="submit">保存</button>
+            <input type="button" value="保存" class="btn btn-primary btnSave">
           </div>
         </div>
       </form>
@@ -68,3 +73,7 @@
   </div>
 <%- include('./layout/admin_aside.ejs');%>
 <%- include('./layout/amin_footer.ejs');%>
+<script src="/assets/vendors/template/template.js"></script>
+<script src="../../assets/vendors/ckeditor/ckeditor.js"></script>
+<script src="/assets/vendors/moment/moment.js"></script>
+<script src="/assets/js/posts-add.js"></script>
