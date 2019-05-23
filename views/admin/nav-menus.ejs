@@ -32,10 +32,10 @@
             </div>
             <div class="form-group">
               <label for="href">链接</label>
-              <input id="href" class="form-control" name="href" type="text" placeholder="链接">
+              <input id="href" class="form-control" name="link" type="text" placeholder="链接">
             </div>
             <div class="form-group">
-              <button class="btn btn-primary" type="submit">添加</button>
+              <input class="btn btn-primary addNav" type="button" value="添加">
             </div>
           </form>
         </div>
@@ -55,33 +55,20 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
+           
+             <script type="text/template" id="listTemp">
+              {{each data as value index}}
+                 <tr>
                 <td class="text-center"><input type="checkbox"></td>
-                <td><i class="fa fa-glass"></i>奇趣事</td>
-                <td>奇趣事</td>
-                <td>#</td>
+                <td><i class="{{value.icon}}"></i>{{value.text}}</td>
+                <td>{{value.title}}</td>
+                <td>{{value.link}}</td>
                 <td class="text-center">
                   <a href="javascript:;" class="btn btn-danger btn-xs">删除</a>
                 </td>
               </tr>
-              <tr>
-                <td class="text-center"><input type="checkbox"></td>
-                <td><i class="fa fa-phone"></i>潮科技</td>
-                <td>潮科技</td>
-                <td>#</td>
-                <td class="text-center">
-                  <a href="javascript:;" class="btn btn-danger btn-xs">删除</a>
-                </td>
-              </tr>
-              <tr>
-                <td class="text-center"><input type="checkbox"></td>
-                <td><i class="fa fa-fire"></i>会生活</td>
-                <td>会生活</td>
-                <td>#</td>
-                <td class="text-center">
-                  <a href="javascript:;" class="btn btn-danger btn-xs">删除</a>
-                </td>
-              </tr>
+              {{/each}}
+             </script>
             </tbody>
           </table>
         </div>
@@ -90,3 +77,5 @@
   </div>
     <%- include('./layout/admin_aside.ejs');%>
     <%- include('./layout/amin_footer.ejs');%>
+    <script src="/assets/vendors/template/template.js"></script>
+    <script src="/assets/js/nav-menus.js"></script>

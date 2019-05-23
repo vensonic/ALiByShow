@@ -12,6 +12,8 @@ const postsController = require('./controllers/postsController')
 const uploadController = require('./controllers/uploadController')
 //引入写文章控制器
 const addPostController = require('./controllers/addPostController')
+//引入菜单项控制器
+const navMenusController = require('./controllers/navMenusController')
 //创建路由
 const router = express.Router()
 
@@ -58,9 +60,14 @@ router
   .post("/delCategoriesByMid", categoryController.delCategoriesByMid)
   //后台文章页路由
   .get("/getAllPosts", postsController.getAllPosts)
-  .get("/deletPost",postsController.deletPost)
+  .get("/deletPost", postsController.deletPost)
   //写文章路由
   .post("/addPost", addPostController.addPost)
+  .post("/editPost", addPostController.editPost)
+  .get("/getPostById", addPostController.getPostById)
   //文件上传
-  .post("/uploadFile", uploadController.uploadFile);
+  .post("/uploadFile", uploadController.uploadFile)
+  //菜单栏
+  .post("/addNavInfo", navMenusController.addNavInfo)
+  .get("/getAllNav", navMenusController.getAllNav)
 module.exports = router
